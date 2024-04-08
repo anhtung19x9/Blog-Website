@@ -23,7 +23,7 @@ namespace Blog
         protected void Button1_Click(object sender, EventArgs e)
         {
             String path = Server.MapPath("App_Data\\members.xml");
-            if (!myEmail.Value.ToString().Equals(myPassword.Value.ToString()))
+            if (myEmail.Value.ToString().Equals(myPassword.Value.ToString()))
             {
                 return;
             }
@@ -36,9 +36,9 @@ namespace Blog
 
 
             if (addMember)
-            {
-
-                Response.Redirect("SignIn.aspx");
+            {   
+                ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Signup is successful. Redirecting to Signin page...'); setTimeout(function(){  window.location.href = 'SignIn.aspx'; }, 4000);", true);
+                // Response.Redirect("SignIn.aspx");
             }
             else
             {
